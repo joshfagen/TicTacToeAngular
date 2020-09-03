@@ -13,13 +13,13 @@ export class BoardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.newGame();
+    this.newGame('X');
   }
 
-  newGame() {
+  newGame(first) {
     this.squares = Array(9).fill(null); 
     this.winner = '';
-    this.turn = 'X';
+    first == 'X' ? this.turn = 'X' : this.turn = 'O';
   }
 
   // get player() {

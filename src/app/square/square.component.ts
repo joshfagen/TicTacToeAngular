@@ -8,7 +8,7 @@ import { Component, Input} from '@angular/core';
     </button>
   `,
   styles: [
-    
+    'button { width: 100%; height: 100%; font-size: 5em; }',
   ]
 })
 export class SquareComponent {

@@ -1,6 +1,8 @@
 <h1>Current Move: {{ turn }}</h1>
 
-<button (click)="newGame()">Start Game</button>
+<button (click)="newGame('X')">Start Game - X First</button>
+
+<button (click)="newGame('O')">Start Game - O First</button>
 
 <h2 *ngIf="winner">
     {{ winner }} Wins!
