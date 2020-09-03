@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -9,17 +9,18 @@ export class BoardComponent implements OnInit {
   squares: String[];
   turn: String;
   winner: String; 
+  winningSquares: Number[];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.newGame('X');
+    this.newGame('');
   }
 
   newGame(first) {
     this.squares = Array(9).fill(null); 
     this.winner = '';
-    first == 'X' ? this.turn = 'X' : this.turn = 'O';
+    first == '' ? this.turn = 'Click to Start!' : this.turn = first;
   }
 
   // get player() {
@@ -32,7 +33,12 @@ export class BoardComponent implements OnInit {
       this.turn == 'X' ? this.turn = 'O' : this.turn = 'X';
     }
 
-    this.winner = this.checkWinner();
+    this.winningSquares = this.checkWinner();
+
+    if(this.winningSquares) {
+
+      this.turn == 'X' ? this.winner = 'O' : this.winner = 'X';
+    }
   }
 
   checkWinner() {
@@ -52,7 +58,8 @@ export class BoardComponent implements OnInit {
       if(this.squares[a] &&
         this.squares[a] == this.squares[b] &&
         this.squares[b] == this.squares[c]) {
-          return this.squares[a];
+        let winningArray = [a, b, c];
+          return winningArray; 
         }
     }
     return null;

@@ -1,17 +1,19 @@
 <h1>Current Move: {{ turn }}</h1>
 
-<button (click)="newGame('X')">Start Game - X First</button>
+<button nbButton outline status="success" (click)="newGame('X')">Start Game - X First</button>
 
-<button (click)="newGame('O')">Start Game - O First</button>
+<button nbButton outline status="info" (click)="newGame('O')">Start Game - O First</button>
 
 <h2 *ngIf="winner">
     {{ winner }} Wins!
 </h2>
 
 <main>
-    <app-square *ngFor="let val of squares; let i = index;"
-    [value]="val"
-    (click)="fillSquare(i)">
+    <app-square 
+        *ngFor="let val of squares; let i = index;"
+        [value]="val"
+        (click)="fillSquare(i)"
+    >
 
     </app-square>
 </main>
